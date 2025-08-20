@@ -121,7 +121,7 @@ const onboard = async function (request, response) {
       return response.status(400).json({
         message: "All fields are required",
         missingFields: [
-          !fullName && "fullname",
+          !fullName && "fullName",
           !bio && "bio",
           !nativeLanguage && "native language",
           !learningLanguage && "learning language",
