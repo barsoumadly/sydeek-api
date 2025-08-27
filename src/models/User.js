@@ -56,6 +56,11 @@ const userSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+
+    type: {
+      type: String,
+      enum: ["Provider", "User"],
+    },
   },
   { timestamps: true }
 );
