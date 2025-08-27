@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 const signup = async function (request, response) {
-  const { fullName, email, password } = request.body;
+  const { fullName, email, password, type } = request.body;
 
   try {
     if (!fullName || !email || !password) {
@@ -35,6 +35,7 @@ const signup = async function (request, response) {
       fullName,
       email,
       password,
+      type,
       profilePicture: randomAvatar,
     });
 
