@@ -10,6 +10,7 @@ const getRecommendedUsers = async function (request, response) {
       $and: [
         { _id: { $ne: userId } },
         { _id: { $nin: currentUser.friends } },
+        { type: { $ne: "User" } },
         { isOnboarded: true },
       ],
     });
