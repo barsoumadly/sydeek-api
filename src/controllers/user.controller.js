@@ -98,7 +98,7 @@ const acceptFriendRequest = async function (request, response) {
       });
     }
 
-    if (friendRequest.recipient.toString() !== request.user._id) {
+    if (friendRequest.recipient.toString() !== request.user._id.toString()) {
       return response.status(403).json({
         message: "You are not authorized to accept this request",
       });
