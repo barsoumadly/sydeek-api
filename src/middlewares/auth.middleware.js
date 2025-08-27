@@ -6,19 +6,21 @@ const protectRoute = async function (request, response, next) {
     const token = request.cookies.jwt;
 
     if (!token) {
-      response
+      return response
         .status(401)
         .json({ message: "Unauthorized - No token is provided" });
     }
 
     const decoded = jwt.decode(token, process.env.JWT_SECRET_KEY);
     if (!decoded) {
-      response.status(401).json({ message: "Unauthorized - Token is invalid" });
+      return response
+        .status(401)
+        .json({ message: "Unauthorized - Token is invalid" });
     }
 
     const user = await User.findById(decoded.userId).select("-password");
     if (!user) {
-      response
+      return response
         .status(401)
         .json({ message: "Unauthorized - User isn't founded" });
     }
