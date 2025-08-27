@@ -2,7 +2,7 @@ import { generateStreamToken } from "../lib/stream.js";
 
 const getStreamToken = async function (request, response) {
   try {
-    const token = generateStreamToken(request.user._id);
+    const token = generateStreamToken(request.user.id);
 
     response.status(200).json({ success: true, token });
   } catch (error) {
