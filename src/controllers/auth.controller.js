@@ -75,13 +75,15 @@ const login = async function (request, response) {
 
   try {
     if (!email || !password) {
-      response.status(400).json({ message: "All fields are required" });
+      return response.status(400).json({ message: "All fields are required" });
     }
 
     const user = await User.findOne({ email });
     const isPasswordCorrect = await user?.comparePasswords(password);
     if (!user || !isPasswordCorrect) {
-      response.status(401).json({ message: "Invalid email or password" });
+      return response
+        .status(401)
+        .json({ message: "Invalid email or password" });
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
