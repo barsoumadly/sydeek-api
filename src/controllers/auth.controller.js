@@ -111,23 +111,14 @@ const logout = async function (request, response) {
 const onboard = async function (request, response) {
   try {
     const userId = request.user._id;
-    const { fullName, bio, nativeLanguage, learningLanguage, location } =
-      request.body;
+    const { fullName, bio, location } = request.body;
 
-    if (
-      !fullName ||
-      !bio ||
-      !nativeLanguage ||
-      !learningLanguage ||
-      !location
-    ) {
+    if (!fullName || !bio || !location) {
       return response.status(400).json({
         message: "All fields are required",
         missingFields: [
           !fullName && "fullName",
           !bio && "bio",
-          !nativeLanguage && "native language",
-          !learningLanguage && "learning language",
           !location && "location",
         ].filter(Boolean),
       });
