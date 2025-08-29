@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 const signup = async function (request, response) {
-  const { fullName, email, password, type } = request.body;
+  const { fullName, email, password, type, base64 } = request.body;
 
   try {
     if (!fullName || !email || !password) {
@@ -28,15 +28,15 @@ const signup = async function (request, response) {
         .json({ message: "Email is already exist. please use another email" });
     }
 
-    const randomIndex = Math.floor(Math.random() * 1000) + 1;
-    const randomAvatar = `https://i.pravatar.cc/${randomIndex}`;
+    // const randomIndex = Math.floor(Math.random() * 1000) + 1;
+    // const randomAvatar = `https://i.pravatar.cc/${randomIndex}`;
 
     const newUser = await User.create({
       fullName,
       email,
       password,
       type,
-      profilePicture: randomAvatar,
+      profilePicture: base64,
     });
 
     try {
