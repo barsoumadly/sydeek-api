@@ -31,16 +31,6 @@ const userSchema = new mongoose.Schema(
         "https://static.vecteezy.com/system/resources/thumbnails/036/280/651/small_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg",
     },
 
-    nativeLanguage: {
-      type: String,
-      default: "",
-    },
-
-    learningLanguage: {
-      type: String,
-      default: "",
-    },
-
     location: {
       type: String,
       default: "",
