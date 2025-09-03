@@ -42,7 +42,7 @@ const signup = async function (request, response) {
       await upsertStreamUser({
         id: newUser._id.toString(),
         name: newUser.fullName,
-        image: newUser.profilePicture || "",
+        // image: newUser.profilePicture || "",
       });
       console.log(`Stream User created for ${newUser.fullName}`);
     } catch (error) {
