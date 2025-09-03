@@ -136,9 +136,9 @@ const onboard = async function (request, response) {
 
     try {
       await upsertStreamUser({
-        id: newUser._id.toString(),
-        name: newUser.fullName,
-        image: newUser.profilePicture || "",
+        id: updatedUser._id.toString(),
+        name: updatedUser.fullName,
+        image: updatedUser.profilePicture || "",
       });
       console.log(`Stream User updated for ${newUser.fullName}`);
     } catch (error) {
