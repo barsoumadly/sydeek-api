@@ -139,7 +139,7 @@ const onboard = async function (request, response) {
         name: updatedUser.fullName,
         image: profilePicture || "",
       });
-      console.log(`Stream User updated for ${newUser.fullName}`);
+      console.log(`Stream User updated for ${updatedUser.fullName}`);
     } catch (error) {
       console.log("Error updating stream user", error);
     }
