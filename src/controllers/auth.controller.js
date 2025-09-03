@@ -111,7 +111,7 @@ const logout = async function (request, response) {
 const onboard = async function (request, response) {
   try {
     const userId = request.user._id;
-    const { fullName, bio, location } = request.body;
+    const { fullName, bio, location, profilePicture } = request.body;
 
     if (!fullName || !bio || !location) {
       return response.status(400).json({
