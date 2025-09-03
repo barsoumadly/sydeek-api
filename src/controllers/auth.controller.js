@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 const signup = async function (request, response) {
-  const { fullName, email, password, type, base64 } = request.body;
+  const { fullName, email, password, type } = request.body;
 
   try {
     if (!fullName || !email || !password) {
@@ -36,7 +36,6 @@ const signup = async function (request, response) {
       email,
       password,
       type,
-      profilePicture: base64,
     });
 
     try {
@@ -138,7 +137,7 @@ const onboard = async function (request, response) {
       await upsertStreamUser({
         id: updatedUser._id.toString(),
         name: updatedUser.fullName,
-        image: updatedUser.profilePicture || "",
+        image: profilePicture || "",
       });
       console.log(`Stream User updated for ${newUser.fullName}`);
     } catch (error) {
